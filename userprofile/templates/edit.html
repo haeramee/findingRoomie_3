@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type="text/css" href="{% static 'edit.css' %}"/>
+    <title>Edit</title>
+</head>
+<body>
+   
+    <div class="profile_wrap">
+        <div class="profile_title">
+            <h1>내 프로필 수정하기</h1>
+        </div>
+        <form action="{%url 'edit' user.pk %}" method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+        <div class="content_profile">
+            
+                <div class="profile_left">
+                    <img src="{{form.profile_img.url}}" width="450px" height="450px">
+                    {{form.profile_img}}
+                </div>
+                <div class="profile_right">                  
+                    <table class="table1">
+                        <tr>
+                            <td colspan="2">이름</td>
+                            <td colspan="2">{{ form.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>닉네임</td>
+                            <td>{{form.nickname}}</td>
+                            <td>성별</td>
+                            <td>{{ form.gender }}</td>
+                        </tr>
+
+                         <tr>
+                         <td>나이</td>
+                         <td>{{form.age}}</td>
+                         <td>학교</td>
+                         <td>{{form.school}}</td>
+                        </tr>
+
+                        <tr>
+                         <td>학과</td>
+                         <td>{{form.major}}</td>
+                         <td>학번</td>
+                         <td>{{form.studentID}}</td>
+                     
+                        </tr>
+
+                    </table>
+            
+                    <table class="table2">
+                     <tr><col width=30%"><col width="70%">
+                         <td>취침 시간</td>
+                         <td>{{form.sleep_time}}</td>
+                     </tr>
+
+                     <tr>
+                         <td>취식 습관</td>
+                         <td>{{form.cook}}</td>
+                     </tr>
+
+                     <tr>
+                        <td>흡연 여부</td>
+                        <td>* 흡연 시 체크 {{form.smoke}}</td>
+                     </tr>
+
+                     <tr>
+                         <td>예산</td>
+                         <td>{{form.budget}}</td>
+                     </tr>
+
+                     <tr>
+                         <td>희망 거주 지역</td>
+                         <td>{{form.hope_area}}</td>
+                     </tr>
+
+                     <tr>
+                         <td>코멘트</td>
+                         <td>{{form.introduction}}</td>
+                     </tr>
+
+                     <tr>
+                         <td>활동 중</td>
+                         <td>{{ form.profile_active}}</td>
+                     </tr>
+                    </table>
+            </div>
+        </div>
+        <div class="profile_modiBtn">
+            <button type="submit">수정하기</button>
+        </div>
+        </form>
+    </div>
+    
+</body>
+</html>

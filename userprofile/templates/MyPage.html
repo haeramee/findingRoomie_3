@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type="text/css" href="{% static 'mypage1.css' %}"/>
+    <title>My Page</title>
+</head>
+<body>
+    <div class = "all_wrap">
+        <div class="title">
+            <h1>My Page</h1>
+        </div>
+
+        <div class="profile_wrap">
+            <div class="profile_title">
+                <h1>내 프로필</h1>
+            </div>
+            <div class="content_profile">
+                <div class="profile_left">
+                    <img src="{{context.profile_img}}" width="450" height="450">
+                </div>
+                <div class="profile_right">
+                    <div class="right_name">
+                       <b> {{context.username}}</b>님
+                    </div>
+                    <table class="table1">
+                        <tr>
+                            <td>닉네임</td>
+                            <td>{{context.nickname}}</td>
+                            <td>성별</td>
+                            <td>
+                                {% if context.gender == "W" %}
+                                    여자
+                                {% else %}
+                                    남자
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                         <tr>
+                             <td>나이</td>
+                             <td>{{context.age}}</td>
+                             <td>학교</td>
+                             <td>{{context.school}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>학과</td>
+                             <td>{{context.major}}</td>
+                             <td>학번</td>
+                             <td>{{context.studentID}}</td>
+                         
+                         </tr>
+ 
+                    </table>
+                
+                    <table class="table2">
+                         <tr><col width=30%"><col width="70%">
+                             <td>취침 시간</td>
+                             <td>{{context.sleep_time}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>취식 습관</td>
+                             <td>{{context.cook}}</td>
+                         </tr>
+ 
+                         <tr>
+                            <td>흡연 여부</td>
+                            <td>
+                                {% if context.smoke %}
+                                    Yes
+                                {% else %}
+                                    No
+                                 {% endif %}
+                            </td>
+                         </tr>
+ 
+                         <tr>
+                             <td>예산</td>
+                             <td>{{context.budget}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>희망 거주 지역</td>
+                             <td>{{context.hope_area}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>코멘트</td>
+                             <td>{{context.introduction}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>활동 중</td>
+                             <td>
+                                {% if context.profile_active %}
+                                    Yes
+                                {% else %}
+                                    No
+                                {% endif %}
+                             </td>
+                         </tr>
+                    </table>
+                    
+                </div>
+            </div>
+
+            <div class="profile_modiBtn">
+                <a href="{%url 'edit' user.pk%}" id="btn">수정하기</a>
+            </div>
+
+        </div>
+
+        <div class="content_chatList">
+            <div class="profile_title">
+                <h1>내 채팅 목록</h1>
+            </div>
+            <div class="chatList_contain">
+                <table class="table3">
+                    <tr>
+                        <td>이미지</td>
+                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <a href="" class="chat_btn">채팅하기</a>
+                            <a href="" class="delete_btn">나가기</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지</td>
+                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <a href="" class="chat_btn">채팅하기</a>
+                            <a href="" class="delete_btn">나가기</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지</td>
+                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <a href="" class="chat_btn">채팅하기</a>
+                            <a href="" class="delete_btn">나가기</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div>
+ 
+
+   
+
+</body>
+</html>

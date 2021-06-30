@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FINDING ROOMIE</title>
+    <link rel='stylesheet' type="text/css" href="{% static 'style.css' %}"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1><a href="#">FINDING ROOMIE</a></h1>
+        <div class="nav">
+          <ul>
+            <li>
+            {% csrf_token %}
+            {% if user.is_authenticated %}
+            
+            안녕하세요, {{user.username}} 님!
+            {% endif %}
+            </li>
+            <li>
+            {% if not user.is_authenticated %}
+            <a href="{%url 'login'%}">Login</a>
+            <a href="{%url 'register'%}">Sign up</a>
+            {% endif %}
+            </li>
+            <li>
+            {% if user.is_authenticated %}
+            <a href="{%url 'MyPage'%}">MyPage</a>
+            <a href="{%url 'logout'%}">Logout</a>
+            {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="hero">
+        <h2>나의 영혼의 룸메이트 구하기</h2>
+        <p>
+          여러분의 생활습관과 가장 비슷한 룸메이트를 추천해드립니다. <br />
+          안전하게 같은 학교 내에서 영혼의 룸메이트를 찾아보세요!
+        </p>
+        <button>
+          <a
+            href="https://tinder.com/"
+            onclick="window.open(this.href, '_blank', 'width=720px,height=1280px,toolbars=no,scrollbars=no'); return false;"
+            >추천 룸메이트 보기</a
+          >
+        </button>
+      </div>
+    </div>
+    <form class="search_form" action="{% url 'search' %}" method="post">
+      {% csrf_token %}
+      <select name="fd_name" id="" class="form-control">
+          <option value="major">major</option>
+          <option value="hope_area">hope_area</option>
+      </select>
+      <input class="search_text" type="search" placeholder="Search" name="q" value="{{q}}">
+      <button class="search_btn" type="submit">Search</button>
+  </form>
+    <div class="list_wrap">
+      <ul>
+        {% for user in users %}
+        {% if user.profile_active %}
+        <li class="item">
+          <div class="image">
+            {%if user.profile_img%}
+            <img src="{{user.profile_img.url}}" alt="" width="128px" height="128px">
+            {% endif %}
+          </div>
+          <strong>{{user.username}} 님</strong>
+          <p>{{user.age}} 살</p>
+          <p>{{user.major}}</p>
+          <p>{{user.studentID}}</p>
+          <a href="#" class="detail_btn">더 알아보기</a>            
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="main_text2" id="link_contact">
+      <ul>
+        <li>
+          <div><h1>CONTACT</h1></div>
+          <div>이용 중에 문의사항이 있으시면 알려주세요</div>
+          <button>
+            <a
+              href="https://google.com/"
+              onclick="window.open(this.href, '_blank', 'width=720px,height=1280px,toolbars=no,scrollbars=no'); return false;"
+              >더 알아보기</a>
+          </button>
+        </li>
+        <li></li>
+      </ul>
+    </div>
+    <footer class="main_text3">
+      <div>logo</div>
+      <div>
+        CEO. 김 니 모 <br />
+        Addr. 성균관대학교 <br />
+        FINDING ROOMIE Fax/Tel. 02 - 123 -4567 <br />
+      </div>
+    </footer>
+  </div>
+</div>
+<div class="snsbar">
+  <a href="http://facebook.com"><i class="fab fa-facebook-f"></i></a>
+  <a href="http://twitter.com"><i class="fab fa-twitter"></i></a>
+  <a href="http://instagram.com"><i class="fab fa-instagram"></i></a>
+  <a href="http://youtube.com"><i class="fab fa-youtube"></i></a>
+</div>
+  </body>
+</html>
