@@ -9,10 +9,32 @@
     <title>My Page</title>
 </head>
 <body>
+    <div class="container">
+  <div class="header">
+    <h1><a href="#">FINDING ROOMIE</a></h1>
+    <div class="nav">
+      <ul>
+        <li>
+          {% csrf_token %} {% if user.is_authenticated %} 안녕하세요,
+          {{user.username}} 님! {% endif %}
+        </li>
+        <li>
+          {% if not user.is_authenticated %}
+          <a href="{%url 'login'%}">Login</a>
+          <a href="{%url 'register'%}">Sign up</a>
+          {% endif %}
+        </li>
+        <li>
+          {% if user.is_authenticated %}
+          <a href="{%url 'MyPage'%}">MyPage</a>
+          <a href="{%url 'logout'%}">Logout</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
     <div class = "all_wrap">
-        <div class="title">
-            <h1>My Page</h1>
-        </div>
 
         <div class="profile_wrap">
             <div class="profile_title">
@@ -125,8 +147,18 @@
                         <td>이미지</td>
                         <td><b>이름</b><br>채팅 내용</td>
                         <td>
-                            <a href="" class="chat_btn">채팅하기</a>
-                            <a href="" class="delete_btn">나가기</a>
+                            <input type="button" id="button" 
+                             class="chat_btn" value="채팅하기"> 
+                            {% comment %} <a href="#" onclick="chatting();" class="chat_btn">채팅하기</a> {% endcomment %}
+                            <a href="" class="delete_btn">삭제</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>이미지</td>
+                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <a href=""  class="chat_btn">채팅하기</a>
+                            <a href="" class="delete_btn">삭제</a>
                         </td>
                     </tr>
                     <tr>
@@ -134,25 +166,105 @@
                         <td><b>이름</b><br>채팅 내용</td>
                         <td>
                             <a href="" class="chat_btn">채팅하기</a>
-                            <a href="" class="delete_btn">나가기</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>이미지</td>
-                        <td><b>이름</b><br>채팅 내용</td>
-                        <td>
-                            <a href="" class="chat_btn">채팅하기</a>
-                            <a href="" class="delete_btn">나가기</a>
+                            <a href="" class="delete_btn">삭제</a>
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-
-    </div>
- 
-
-   
-
+<div id="chatBackground">
+    <div class="chatview">      
+            <div id="profile" >
+                <div id="close">
+                    <input type="button" id="close_button" value="◁"/>
+                </div>
+                <div class="info">
+                <img src="{% static 'images/profile_fish.png'%}">
+                <p>Roomie</p>
+                <span>성균관대학교 경영</span>
+                </div>
+            </div>
+            <div id="chat-messages">
+            <label>Thursday 30</label>
+                
+                <div class="message">
+                <img src="{% static 'images/profile_fish.png'%}" />
+                <div class="bubble">
+                    안녕하세요! 프로필 보고 관심있어서 채팅드렸어요.
+                    <div class="corner"></div>
+                    <span>3 min</span>
+                </div>
+                </div>
+                
+                <div class="message right">
+                <img src="{{user.profile_img.url}}" />
+                <div class="bubble">
+                    안녕하세요! 혹시 봐두신 방이 따로 있으신가요?
+                        <div class="corner"></div>
+                        <span>3 min</span>
+                </div>
+                </div>
+                
+                <div class="message">
+                <img src="{% static 'images/profile_fish.png'%}" />
+                    <div class="bubble">
+                    아니요! 룸메 구해지면, 같이 방 보러 다니려고 했습니다:)
+                        <div class="corner"></div>
+                        <span>3 min</span>
+                    </div>
+                </div>
+                
+                <div class="message right">
+                <img src="{{user.profile_img.url }}" />
+                    <div class="bubble">
+                    아, 그러시군요. 제가 한번 부동산에 물어보고 다시 연락드리겠습니다.
+                        <div class="corner"></div>
+                        <span>2 min</span>
+                    </div>
+                </div>
+                
+                <div class="message">
+                <img src="{% static 'images/profile_fish.png'%}" />
+                    <div class="bubble">
+                    넵!
+                        <div class="corner"></div>
+                        <span>2 min</span>
+                    </div>
+                </div>
+                
+            </div>
+        
+            <div id="sendmessage">
+            <input type="text" value="Send message..." />
+                <button id="send"></button>
+            </div>
+        
+        </div>     
+</div>
 </body>
+    <script>
+        var chat = document.getElementsByClassName('chatview');
+        var chat_back = document.getElementById("chatBackground")
+        document.getElementById("button").addEventListener('click', ()=>{
+            chat[0].classList.toggle("show");
+            chat_back.style.display = "block";
+            
+        })
+
+        {% comment %} function chatting(){
+            console.log("버튼인식");
+
+            document.getElementById("chatview").style.display = "block";
+            document.getElementById("chatview").style.transition= all 0.4s ;
+            document.getElementById("chatBackground").style.display = "block";
+        } {% endcomment %}
+        document.getElementById("close_button").addEventListener("click", function () {
+            console.log("닫기");
+            chat[0].classList.remove("show");
+            document.getElementById("chatBackground").style.display = "none";
+        }) 
+        
+    </script>
+
+
 </html>

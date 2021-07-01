@@ -1,3 +1,48 @@
+@font-face {
+	font-family: abster;
+	src: url(/me/templates/assets/font/abster-webfont.woff) format("woff");
+  }
+  
+  .container .header {
+	width: 80%;
+	height: 80px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  
+  .container .header h1 a {
+	text-decoration: none;
+	color: black;
+	font-family: abster;
+  }
+  
+  .container .nav {
+	text-decoration: none;
+	color: white;
+	font-family: abster;
+	font-size: 16px;
+	font-weight: bolder;
+  }
+  
+  .container .nav ul li {
+	display: inline-block;
+	margin: 0 10px;
+  }
+  
+  .container .nav ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+  }
+  
+body {
+	margin:0;
+	padding:0;
+	overflow-x:hidden ;
+	height: auto;
+}
 .all_wrap{
 
     display:flex;
@@ -26,10 +71,13 @@
 }
 
 .profile_title{
+	margin-top: 40px;
     margin-bottom: 30px;
     width:100%;
     text-align: center;
     line-height: 30px;
+	background-color: #62cee5;
+	color:white;
 
 }
 
@@ -162,6 +210,13 @@ tr, td{
     align-self: center;
     line-height: 35px;
 }
+input[type="button"]{
+	border: none;
+	padding: 0;
+	cursor: pointer;
+    font-size: 16px;
+	font:bold;
+}
 
 .delete_btn{
     text-decoration: none;
@@ -174,4 +229,199 @@ tr, td{
     align-self: center;
     line-height: 35px;
     margin-left: 10px;
+}
+
+#chatBackground {
+	display: none;
+    position: absolute;
+    width: 100%;
+    height: 1437.96px;
+    backdrop-filter: blur(5px);
+	background-color: rgba(61, 137, 201, 0.3);
+  }
+
+.chatview{
+	width:300px;
+	height:484px;
+	opacity:0;
+	position:absolute;
+	bottom: 3%;
+    left:40%;
+	/* visibility: hidden; */
+	background-color: #fff;
+	/* transition : all 4s;*/
+} 
+.show{
+	transition : all 8s;
+	opacity: 1;
+	/* visibility: visible ; */
+}
+#profile{
+	height:153px;
+	text-align:center;
+	margin-top:0;
+	background:url("/static/images/FindingRoomie_background.jpg") 0 0 no-repeat; }
+.info {
+	padding-top:50px;
+}
+
+#profile .info img{
+	border-radius: 50%; 
+	object-fit: cover;
+	width: 40px;
+	height: 40px;
+	margin-top: 10px;
+}
+
+#profile  p{
+	font-weight:600;
+	font-size:15px;
+	margin:5px 0 -1px;
+}
+
+#profile  span{
+	font-weight:400;
+	font-size:11px;
+}
+#chat-messages{
+	width:300px;
+	height:270px;
+	/* 상하 스크롤, 좌우로는 영역밖의 내용은 잘림 */
+	overflow-y:scroll; 
+	overflow-x:hidden;
+	padding-right: 20px;
+}
+#chat-messages label{
+	color:rgb(141, 140, 140);
+	font-weight:600;
+	font-size:12px;
+	text-align:center;
+	margin:15px 0;
+	width:290px;
+	display:block;	
+}
+
+#chat-messages div.message{
+	padding:0 0 30px 58px;
+	/* clear:both; */
+	margin-bottom:45px;
+}
+#chat-messages div.message.right{
+	  padding: 0 58px 30px 0;
+	  margin-right: -19px;
+	  margin-left: 19px;
+}
+#chat-messages .message img{
+	  float: left;
+	  margin-left: -38px;
+	  border-radius: 50%;
+	  width: 30px;
+	  height: 30px;
+	  margin-top: 12px;
+}
+#chat-messages div.message.right img{
+	float: right;	
+    margin-left: 0;
+	margin-right: -38px;	
+}
+.message .bubble{	
+	background:#f0f4f7;
+	font-size: 7px;
+	font-weight:600;
+	padding:12px 13px;
+	border-radius:5px 5px 5px 0px;
+	color:#8495a3;
+	position:relative;
+	float:left;
+}
+#chat-messages div.message.right .bubble{
+	float:right;
+	border-radius:5px 5px 0px 5px ;
+}
+.bubble .corner{
+	background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-corner.png") 0 0 no-repeat;
+	position:absolute;
+	width:7px;
+	height:7px;
+	left:-5px;
+	bottom:0;
+}
+div.message.right .corner{
+	background:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-cornerR.png") 0 0 no-repeat;
+	left:auto;
+	right:-5px;
+}
+
+.bubble span{
+	  color: #aab8c2;
+	  font-size: 11px;
+	  position: absolute;
+	  right: 0;
+	  bottom: -22px;
+}
+#sendmessage{
+	height:60px;
+	border-top:1px solid #e7ebee;	
+	position:absolute;
+	bottom:0;
+	right:0px;
+	width:290px;
+	background:#fff;
+	padding-bottom:0px;
+}
+#sendmessage input{
+	border:none;
+}
+#sendmessage input{
+	background:#fff;
+	margin:21px 0 0 21px;
+	border:none;
+	padding:0;
+	font-size:14px;
+	font-family:"Open Sans", sans-serif; 
+	font-weight:400px;
+	color:#aab8c2;
+}
+#sendmessage input:focus{
+	 outline: 0;
+}
+#sendmessage button{
+	background:#fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/send.png") 0 -41px no-repeat;
+	width:30px;
+	height:30px;
+	position:absolute;
+	right: 15px;
+	top: 23px;
+	border:none;
+}
+#sendmessage button:hover{
+	cursor:pointer;
+	background-position: 0 0 ;
+}
+#sendmessage button:focus{
+	 outline: 0;	 
+}
+
+#close{
+	position:absolute;
+	top: 5px;	
+	opacity:0.8;
+ 	left: 3px;
+	width:20px;
+	height:20px;
+	cursor:pointer;
+}
+#close:hover{
+	opacity:1;
+}
+
+.chatview, #sendmessage { 
+overflow:hidden; 
+border-radius:6px; 
+}
+
+#close_button{
+	border-style: none;
+	background-color: rgba( 255, 255, 255, 0 );
+	font-size: 15px;
 }

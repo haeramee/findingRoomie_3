@@ -1,0 +1,125 @@
+
+#user_detail_view{
+    width:820px;
+    height: 470px;
+    border-radius: 10px;
+    background-color:white;
+}
+
+.detail_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.detail_content{
+    width:90%;
+    height: 350px;
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 18px;
+}
+
+.detail_left_wrap{
+    width:45%;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+.detail_right_wrap{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+    justify-content: center;
+}
+
+.detail_title{
+    font-size: 25pt;
+    font-weight: bold;
+    padding:3px 3px 13px 3px;
+   border-bottom: 3px solid #62cee5;
+    margin-bottom: 12px;
+    text-align: right;
+    letter-spacing: 1px;
+}
+.table1, .table2{
+    border-collapse: collapse;
+}
+.table1{
+    margin-bottom:10px;
+    border-radius: 10px;
+}
+
+tr, td{
+    padding:3px;
+}
+.table1 tr td:nth-child(2){
+    text-align: right;
+    padding-right: 9px;
+    font-weight: bold;
+    
+}
+
+.table1 tr td:nth-child(4){
+    font-weight: bold;
+    text-align: right;
+
+}
+.table2 tr td:nth-child(2){
+    text-align:right;
+    padding-right: 10px;
+    font-weight: bold;
+
+}
+
+.table2{
+    margin-bottom: 10px;
+}
+
+.detail_comment{
+    text-align: center;
+    color:#f0840c;
+}
+
+.detail_btn{
+    display: flex;
+    align-self: flex-end;
+    text-align: center;
+    margin-right: 50px;
+}
+
+
+#btn{
+    text-decoration: none;
+    color: white;
+    display: block;
+    background-color:#62cee5;
+    border-radius: 10px;
+    width: 140px;
+    line-height: 35px;
+    font-weight: bold;
+    transition: background-color .3s;
+    
+}
+#btn:hover{
+    background-color:#f0840c;
+}
+
+#btn2{
+    text-decoration: none;
+    color: white;
+    display: block;
+    background-color:#62cee5;
+    border-radius: 10px;
+    width: 140px;
+    line-height: 35px;
+    font-weight: bold;
+    transition: background-color .3s;
+    margin-left: 30px;
+}
+
+#btn2:hover{
+    background-color:#f0840c;
+}

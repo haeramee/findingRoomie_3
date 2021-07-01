@@ -1,48 +1,33 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make Profile</title>
-</head>
-<body>
-    <h1>Make Your Profile</h1>
-    <form action="{%url 'register' %}" method="POST" enctype="multipart/form-data">
-    {%csrf_token%}
-    {{form.as_p}}
-    <a class="btn login_btn" href="{% url 'login' %}" class="button">Register Account</a>    
-    </form>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html>
     
 <head>
 	<title>Make Profile</title>
+	{% load static %}
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel='stylesheet' type="text/css" href="{% static 'font.css' %}"/>
 	<style>
 		body,
 		html {
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: #7abecc !important;
+			background: #6bc6e0 !important;
 		}
 		.user_card {
 			width: 350px;
-			margin-top: auto;
-			margin-bottom: auto;
-			background: #74cfbf;
-			position: relative;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			background: #3d89c9;
+			/* position: relative; */
+			position: absolute;
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
-			padding: 10px;
+			padding: 20px;
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -54,7 +39,7 @@
 			margin-top: 20px;
 		}
 
-		#form-title{
+		.form-title{
 			color: #fff;
 		}
 		.login_btn {
@@ -70,7 +55,7 @@
 			padding: 0 2rem;
 		}
 		.input-group-text {
-			background: #f7ba5b !important;
+			background: #f0840c !important;
 			color: white !important;
 			border: 0 !important;
 			border-radius: 0.25rem 0 0 0.25rem !important;
@@ -83,69 +68,121 @@
 		.space {
 			margin-top:5px;
 		}
-
+		.space2 {
+			margin-top: 10px;
+		}
+		.whitefont {
+			color: #fff;
+		}
 	</style>
 
 </head>
 <body>
 	<div class="container h-100">
-		<div class="d-flex justify-content-center h-100">
+		<div class="d-flex justify-content-center h-100 ">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
-					<h3 id="form-title">Make Your Profile</h3>
+					<h3 class="form-title">Make Your Profile</h3>
 				</div>
 				<div class="d-flex justify-content-center form_container">
 
                     <form action="{%url 'register' %}" method="POST" enctype="multipart/form-data">
                         {%csrf_token%}
-						<div class="input-group mb-2">
+						<h6 class="form-title"><strong>기본 정보</strong></h6>
+						<div class="input-group mb-2" >
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
+								<span class="input-group-text">별명</span>
 							</div>
 							{{form.nickname}}
 							<div class="space">{{form.introduction}}</div>
-							<div>프로필 사진: {{form.profile_img}}<div>
-							<div>룸메 구하는 중: {{form.profile_active}}</div>
+							<div class="whitefont">프로필 사진 {{form.profile_img}}<div>
+							<!-- <div>룸메 구하는 중: {{form.profile_active}}</div> -->
+							<div class="form-check form-switch  space">
+								<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+								<label class="form-check-label white" for= "flexSwitchCheckChecked">룸메 구하는 중</label>
+							  </div>
 						</div>
-						<div class="input-group mb-2">
+						<div class="input-group mb-2 space2">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+								<span class="input-group-text">성별</i></span>
 							</div>
 							{{form.gender}}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+								<!-- <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span> -->
+								<span class="input-group-text">나이</span>
 							</div>
 							{{form.age}}
 						</div>
+						<hr>
+						<h6 class="form-title"><strong>학교 정보</strong></h6>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-school"></i></span>
+								<span class="input-group-text">대학</i></span>
 							</div>
 							{{form.school}}
-							{{form.major}}
-							{{form.studentID}}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-home"></i></span>
+								<span class="input-group-text">전공</i></span>
+							</div>
+							{{form.major}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">학번</span>
+							</div>
+							{{form.studentID}}
+						</div>
+						<hr>
+						<h6 class="form-title"><strong>생활 습관</strong></h6>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">취침 시간</i></span>
 							</div>
 							{{form.sleep_time}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">수면 습관</i></span>
+							</div>
 							{{form.sleep_habit}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">청소 습관</i></span>
+							</div>
 							{{form.cleanliness}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">취식 여부</i></span>
+							</div>
 							{{form.cook}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">흡연</i></span>
+							</div>
 							{{form.smoke}}
 						</div>
+						<hr>
+						<h6 class="form-title"><strong>희망 거주 형태</strong></h6>
                         <div class="input-group mb-2">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-globe-asia"></i></span>
+								<span class="input-group-text">예산</i></span>
 							</div>
 							{{form.budget}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text">희망 거주 지역</i></span>
+							</div>
 							{{form.hope_area}}
 						</div>
 				   		<div class="d-flex justify-content-center mt-3 login_container">
-				 			<input class="btn login_btn" type="submit" value="Register Account">
+				 			<input class="btn login_btn" type="submit" value="Submit">
 				   		</div>
 					</form>
 				</div>
@@ -160,12 +197,14 @@
 
 		//Query All input fields
 		var form_fields = document.getElementsByTagName('input')
-		form_fields[1].placeholder='Nickname';
 		form_fields[2].placeholder='Gender';
 		form_fields[3].placeholder='Active';
 		form_fields[4].placeholder='Age';
-
-
+		form_fields[8].placeholder='00:00';
+		form_fields[9].placeholder='코골이, 이갈이 등';
+		form_fields[10].placeholder='한 달 2회, 일주일 1회 등';
+		form_fields[11].placeholder='요리 잘 함, 요리 못 함 등';
+		form_fields[12].placeholder='월세: 00만 원, 보증금: 00만 원';
 		for (var field in form_fields){	
 			form_fields[field].className += ' form-control'
 		}

@@ -1,6 +1,7 @@
 @font-face {
   font-family: abster;
-  src: url(/me/templates/assets/font/abster-webfont.woff) format("woff");
+  src: url(/userprofile/templates/assets/font/abster-webfont.woff)
+    format("woff");
 }
 
 * {
@@ -25,8 +26,8 @@ a:hover {
 .container {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url(/me/templates/assets/images/room.jpg);
+  background: linear-gradient(rgba(107, 198, 224, 0.8), rgba(61, 137, 201, 0.8)),
+    url(/userprofile/templates/assets/images/room.jpg);
 }
 
 .container .header {
@@ -88,7 +89,7 @@ a:hover {
 
 .container .hero button {
   background: none;
-  border: 2px solid darkseagreen;
+  border: 2px solid #ffffff;
   color: white;
   padding: 15px 20px;
   border-radius: 20px;
@@ -102,12 +103,12 @@ a:hover {
 }
 
 .container .hero button:hover {
-  background-color: darkslategray;
+  background-color: #f0840c;
   text-decoration: none;
 }
 
 .container .hero button:visited {
-  background-color: darkslategray;
+  background-color: #f0840c;
   text-decoration: none;
 }
 
@@ -120,7 +121,7 @@ a:hover {
 .list_wrap {
   width: 100%;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+  background: linear-gradient(rgba(61, 137, 201, 0.8), rgba(107, 198, 224, 0.8)),
     url(/userprofile/templates/assets/images/room.jpg);
   text-decoration: none;
   color: white;
@@ -131,18 +132,19 @@ a:hover {
   list-style: none;
 }
 
-.list_wrap li {
-  margin-top: 30px;
-}
-
 .list_wrap a {
   text-decoration: none;
   color: inherit;
 }
 
+.list_wrap ul {
+  font-size: 0;
+}
+
 .list_wrap .item {
   display: inline-block;
   width: 30%;
+  margin-bottom: 40px;
   align-items: center;
   text-align: center;
 }
@@ -152,6 +154,11 @@ a:hover {
   height: 160px;
 }
 
+.list_wrap .item .image:hover {
+  transition: all 0.4s;
+  transform: scale(1.1);
+}
+
 .list_wrap .item strong {
   display: block;
   margin: 15px 0 10px 0;
@@ -159,12 +166,15 @@ a:hover {
   letter-spacing: -1px;
 }
 
+.txts {
+  background: linear-gradient(rgba(107, 198, 224, 0.8) rgba(61, 137, 201, 0.8)),
+    url(/userprofile/templates/assets/images/room.jpg);
+}
+
 .main_text2,
 .main_text3 {
-  margin-top: 200px;
   width: 100%;
   height: 20vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   text-decoration: none;
   color: white;
   font-family: abster;

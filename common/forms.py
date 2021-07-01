@@ -6,6 +6,8 @@ from django.forms.widgets import RadioSelect
 from .models import UserInfo 
 
 class RegisterForm(UserCreationForm):
+    email = forms.EmailField(label="이메일")
+    
     class Meta:
         model = UserInfo
         fields = ['username', 'email', 'password1','password2','nickname','gender','age','school','major',
@@ -16,10 +18,10 @@ class RegisterForm(UserCreationForm):
         widgets = {
             'introduction': forms.Textarea(attrs={'rows':'3', 'cols': '40', 'placeholder':' 한 줄 자기 소개'}),
             'gender':forms.Select(),
-            'sleep_habit':forms.Select(),
-            'sleep_time': forms.Select(),
-            'cleanliness':forms.Select(),
-            'cook':forms.Select(),
+            # 'sleep_habit':forms.Select(),
+            # 'sleep_time': forms.Select(),
+            # 'cleanliness':forms.Select(),
+            # 'cook':forms.Select(),
             # 'budget':forms.RadioSelect(),
         }
 

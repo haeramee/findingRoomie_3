@@ -1,24 +1,104 @@
-<div>
-    {% if users.profile_img %}
-    <img src="{{users.profile_img.url}}" alt="" width="300" height="300">
-    {% endif %}
-</div>
-<div>
-    <h3>{{users.username}}</h3> 
-    {{users.age}}<br>
-    {% if users.gender == "W" %}
-                    여자<br>
-                {% else %}
-                    남자<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type="text/css" href="{% static 'detail.css' %}"/>
+</head>
+<body>
+    <div id="user_detail_view">
+        <div class="detail_wrap">
+
+        <div class="detail_content">
+            <div class="detail_left_wrap">
+                {% if users.profile_img %}
+                <img src="{{users.profile_img.url}}" alt="" width="320" height="320">
                 {% endif %}
-    {{users.hope_area}}<br>
-    {{users.school}}<br>
-    {{users.major}}<br>
-    {{users.sleep_habit}}<br>
-    {{users.sleep_time}}<br>
-    {{users.cleanliness}}<br>
-    {{users.cook}}<br>
-    {{users.smoke}}<br>
-    {{users.budget}}<br>
-    {{users.introduction}}
-</div>
+            </div>
+
+            <div class="detail_right_wrap">
+                <div class="detail_title">
+                    {{users.username}}
+                </div>
+                    <table class="table1">
+                        <tr>
+                            <td>닉네임:</td>
+                            <td>{{users.nickname}}</td>
+                            <td>성별:</td>
+                            <td>
+                                {% if users.gender == "W" %}
+                                    여자
+                                {% else %}
+                                    남자
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                         <tr>
+                             <td>나이:</td>
+                             <td>{{users.age}}세</td>
+                             <td>학교:</td>
+                             <td>{{users.school}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>학과:</td>
+                             <td>{{users.major}}</td>
+                             <td>학번:</td>
+                             <td>{{users.studentID}}</td>
+                         
+                         </tr>
+ 
+                    </table>
+                
+                    <table class="table2">
+                         <tr><col width=35%><col width="70%">
+                             <td>취침 시간</td>
+                             <td>{{users.sleep_time}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>취식 습관</td>
+                             <td>{{users.cook}}</td>
+                         </tr>
+ 
+                         <tr>
+                            <td>흡연 여부</td>
+                            <td>
+                                {% if users.smoke %}
+                                    Yes
+                                {% else %}
+                                    No
+                                 {% endif %}
+                            </td>
+                         </tr>
+ 
+                         <tr>
+                             <td>예산</td>
+                             <td>{{users.budget}}</td>
+                         </tr>
+ 
+                         <tr>
+                             <td>희망 거주 지역</td>
+                             <td>{{users.hope_area}}</td>
+                         </tr>
+                    </table>
+                    <div class="detail_comment">
+                      <b>" {{users.introduction}} "</b> 
+                    </div>
+                </div>
+        </div>
+
+        <div class="detail_btn">
+            <a href="" id="btn">채팅하기</a>
+            <a href="" id="btn2">창 닫기</a>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
+
+
+

@@ -9,11 +9,35 @@
     <link rel='stylesheet' type="text/css" href="{% static 'style.css' %}"/>
   </head>
   <body>
+    <script>
+      var randomlinks=new Array()
+      // 랜덤으로 보여줄 프로필 링크 걸기
+      randomlinks[0]="http://www.youtube.com"
+      randomlinks[1]="http://www.daum.net"
+      randomlinks[2]="http://www.everytime.kr"
+      randomlinks[3]="http://news.co.kr"
+      randomlinks[4]="http://www.naver.com"
+      
+      function randomlink(){
+      window.location=randomlinks[Math.floor(Math.random()*randomlinks.length)]
+    </script>
     <div class="container">
       <div class="header">
         <h1><a href="#">FINDING ROOMIE</a></h1>
         <div class="nav">
           <ul>
+            <form class="search_form" action="{% url 'search' %}" method="post">
+              {% csrf_token %}
+              <select name="fd_name" id="" class="form-control">
+                  <option value="">필터</option>
+                  <option value="major">나이</option>
+                  <option value="hope_area">전공</option>
+                  <option value="hope_area">성별</option>
+                  <option value="hope_area">지역</option>
+              </select>
+              <input class="search_text" type="search" placeholder="Search" name="q" value="{{q}}">
+              <button class="search_btn" type="submit">Search</button>
+          </form>
             <li>
             {% csrf_token %}
             {% if user.is_authenticated %}
@@ -21,6 +45,7 @@
             안녕하세요, {{user.username}} 님!
             {% endif %}
             </li>
+            
             <li>
             {% if not user.is_authenticated %}
             <a href="{%url 'login'%}">Login</a>
@@ -42,74 +67,35 @@
           여러분의 생활습관과 가장 비슷한 룸메이트를 추천해드립니다. <br />
           안전하게 같은 학교 내에서 영혼의 룸메이트를 찾아보세요!
         </p>
-        <button>
-          <a
-            href="https://tinder.com/"
-            onclick="window.open(this.href, '_blank', 'width=720px,height=1280px,toolbars=no,scrollbars=no'); return false;"
-            >추천 룸메이트 보기</a
-          >
+        <button name="B1" value="추천 룸메이트 보기" onclick="randomlink()">
+          추천 룸메이트 보기
         </button>
       </div>
     </div>
-    <form class="search_form" action="{% url 'search' %}" method="post">
-      {% csrf_token %}
-      <select name="fd_name" id="" class="form-control">
-          <option value="major">major</option>
-          <option value="hope_area">hope_area</option>
-      </select>
-      <input class="search_text" type="search" placeholder="Search" name="q" value="{{q}}">
-      <button class="search_btn" type="submit">Search</button>
-  </form>
-    <div class="list_wrap">
+    <div class="list_wrap" id="hihi"> 
       <ul>
         {% for user in users %}
         {% if user.profile_active %}
         <li class="item">
-          <div class="image">
-            {%if user.profile_img%}
-            <img src="{{user.profile_img.url}}" alt="" width="128px" height="128px">
-            {% endif %}
-          </div>
-          <strong>{{user.username}} 님</strong>
-          <p>{{user.age}} 살</p>
-          <p>{{user.major}}</p>
-          <p>{{user.studentID}}</p>
-          <a href="#" class="detail_btn">더 알아보기</a>            
+          <a href="{%url 'detail' user.id %}" onclick="window.open(this.href, '_blank', 'width=720px,height=1280px,toolbars=no,scrollbars=no'); return false;">
+            <div class="image">
+              {%if user.profile_img%}
+              <img src="{{user.profile_img.url}}" alt="" width="128px" height="128px">
+              <div class="top"><strong>{{user.username}} 님</strong></div>
+              {% endif %}
+            </div>
+            <div class="etc">
+              <p>{{user.age}} 살</p>
+              <p>{{user.major}}</p>
+              <p>{{user.studentID}}</p>
+            </div>
         </li>
+      </a>
         {% endif %}
         {% endfor %}
       </ul>
     </div>
-    <div class="main_text2" id="link_contact">
-      <ul>
-        <li>
-          <div><h1>CONTACT</h1></div>
-          <div>이용 중에 문의사항이 있으시면 알려주세요</div>
-          <button>
-            <a
-              href="https://google.com/"
-              onclick="window.open(this.href, '_blank', 'width=720px,height=1280px,toolbars=no,scrollbars=no'); return false;"
-              >더 알아보기</a>
-          </button>
-        </li>
-        <li></li>
-      </ul>
-    </div>
-    <footer class="main_text3">
-      <div>logo</div>
-      <div>
-        CEO. 김 니 모 <br />
-        Addr. 성균관대학교 <br />
-        FINDING ROOMIE Fax/Tel. 02 - 123 -4567 <br />
-      </div>
-    </footer>
   </div>
-</div>
-<div class="snsbar">
-  <a href="http://facebook.com"><i class="fab fa-facebook-f"></i></a>
-  <a href="http://twitter.com"><i class="fab fa-twitter"></i></a>
-  <a href="http://instagram.com"><i class="fab fa-instagram"></i></a>
-  <a href="http://youtube.com"><i class="fab fa-youtube"></i></a>
 </div>
   </body>
 </html>

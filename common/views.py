@@ -34,7 +34,7 @@ def register_view(request):
         return redirect("login")
     else:
         form = RegisterForm()
-        return render(request,'register.html',{'form':form})
+    return render(request,'register.html',{'form':form})
 
 def make_profile(request):
     if request.method =='POST':
@@ -48,14 +48,4 @@ def make_profile(request):
     else:
         form = RegisterForm()
         return render(request,'makeProfile.html',{'form':form})
-        
-# def make_profile(request,pk):
-#     if request.method == 'POST':
-#         # 이미지 파일 수정 안되는거 오류 해결 필요
-#         form=CustomUserChangeForm(request.POST,instance=request.user,)
-#         if form.is_valid():
-#             form.save()
-#         return redirect("MyPage")
-#     else:
-#         form = CustomUserChangeForm(instance = request.user)
-#         return render(request,'makeProfile.html',{'form':form})
+
