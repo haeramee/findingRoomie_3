@@ -144,26 +144,31 @@
             <div class="chatList_contain">
                 <table class="table3">
                     <tr>
-                        <td>이미지</td>
-                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <img class="ChatListImg" src="{% static 'images/profile_fish.png'%}">
+                        </td>
+                        <td><b>poooh</b><br>넵!</td>
                         <td>
                             <input type="button" id="button" 
                              class="chat_btn" value="채팅하기"> 
-                            {% comment %} <a href="#" onclick="chatting();" class="chat_btn">채팅하기</a> {% endcomment %}
                             <a href="" class="delete_btn">삭제</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>이미지</td>
-                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <img class="ChatListImg" src="{% static 'images/Nemo.png'%}">
+                        </td>
+                        <td><b>ziri</b><br>정해지시면 연락부탁드릴게요</td>
                         <td>
                             <a href=""  class="chat_btn">채팅하기</a>
                             <a href="" class="delete_btn">삭제</a>
                         </td>
                     </tr>
                     <tr>
-                        <td>이미지</td>
-                        <td><b>이름</b><br>채팅 내용</td>
+                        <td>
+                            <img class="ChatListImg" src="{% static 'images/juv.png'%}">
+                        </td>
+                        <td><b>hyuni</b><br>월세는 어느정도 생각하시나요?</td>
                         <td>
                             <a href="" class="chat_btn">채팅하기</a>
                             <a href="" class="delete_btn">삭제</a>
@@ -180,7 +185,7 @@
                 </div>
                 <div class="info">
                 <img src="{% static 'images/profile_fish.png'%}">
-                <p>Roomie</p>
+                <p>poooh</p>
                 <span>성균관대학교 경영</span>
                 </div>
             </div>
@@ -251,13 +256,6 @@
             
         })
 
-        {% comment %} function chatting(){
-            console.log("버튼인식");
-
-            document.getElementById("chatview").style.display = "block";
-            document.getElementById("chatview").style.transition= all 0.4s ;
-            document.getElementById("chatBackground").style.display = "block";
-        } {% endcomment %}
         document.getElementById("close_button").addEventListener("click", function () {
             console.log("닫기");
             chat[0].classList.remove("show");

@@ -26,18 +26,6 @@
         <h1><a href="#">FINDING ROOMIE</a></h1>
         <div class="nav">
           <ul>
-            <form class="search_form" action="{% url 'search' %}" method="post">
-              {% csrf_token %}
-              <select name="fd_name" id="" class="form-control">
-                  <option value="">필터</option>
-                  <option value="major">나이</option>
-                  <option value="hope_area">전공</option>
-                  <option value="hope_area">성별</option>
-                  <option value="hope_area">지역</option>
-              </select>
-              <input class="search_text" type="search" placeholder="Search" name="q" value="{{q}}">
-              <button class="search_btn" type="submit">Search</button>
-          </form>
             <li>
             {% csrf_token %}
             {% if user.is_authenticated %}
@@ -77,7 +65,7 @@
         {% for user in users %}
         {% if user.profile_active %}
         <li class="item">
-          <a href="{%url 'detail' user.id %}" onclick="window.open(this.href, '_blank', 'width=720px,height=1280px,toolbars=no,scrollbars=no'); return false;">
+          <a href="{%url 'detail' user.id %}" onclick="window.open(this.href, '_blank', 'width=850px,height=480px,toolbars=no,scrollbars=no,left=200px,top=50px'); return false;">
             <div class="image">
               {%if user.profile_img%}
               <img src="{{user.profile_img.url}}" alt="" width="128px" height="128px">
@@ -98,4 +86,5 @@
   </div>
 </div>
   </body>
+
 </html>

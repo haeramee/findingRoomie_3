@@ -2,11 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 GENDER_CHOICE = (('W','여성'),('M','남성'))
-# SLEEP_HABIT_CHOICE = (('A','이 갈이'),('B','코골이'))
-# SLEEP_TIME_CHOICE = (('D','D'),('E','E'),('F','F'),)
-# CLEAN_CHOICE = (('G','G'),('H','H'),('I','I'),)
-# COOK_CHOICE = (('J','J'),('K','K'),('L','L'),)
-# BUDGET_CHOICE = (('M','M'),('N','N'),('O','O'),)
 SMOKER = (('N','비흡연자'),('Y','흡연자'))
 
 class UserInfo(AbstractUser):

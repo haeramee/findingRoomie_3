@@ -92,12 +92,74 @@
         </div>
 
         <div class="detail_btn">
-            <a href="" id="btn">채팅하기</a>
-            <a href="" id="btn2">창 닫기</a>
+            <input type="button" id="btn" value="채팅하기">
+            <a href="javascript:WinClose();" id="btn2">창 닫기</a>
         </div>
     </div>
     </div>
+<div id="chatBackground">
+    <div class="chatview">      
+            <div id="profile" >
+                <div id="close">
+                    <input type="button" id="close_button" value="◁"/>
+                </div>
+                <div class="info">
+                <img src="{% static 'images/profile_fish.png'%}">
+                <p>Roomie</p>
+                <span>성균관대학교 경영</span>
+                </div>
+            </div>
+            <div id="chat-messages">
+            <label>Thursday 30</label>
+                <div class="message right">
+                  <img src="{{user.profile_img.url}}" />
+                  <div class="bubble">
+                      안녕하세요!
+                      <div class="corner"></div>
+                      <span>now</span>
+                  </div>
+                </div>
+            </div>
+            <div id="sendmessage">
+            <input type="text" value="Send message..." />
+                <button id="send"></button>
+            </div>
+        
+        </div>     
+    </div>
+    </ul>
+    </div>
+
 </body>
+<script>
+    function WinClose()
+    
+     {
+    
+       window.open('','_self').close();     
+    
+    }
+    //채팅창 열기//
+      var chat = document.getElementsByClassName('chatview');
+      var chat_back = document.getElementById("chatBackground")
+      var message = document.getElementById("chat-messages");
+      document.getElementById("btn").addEventListener('click', ()=>{
+            chat[0].classList.toggle("show");
+            chat_back.style.display = "block"; 
+            message.style.display ="none";
+        })
+      // 채팅창 닫기//
+      document.getElementById("close_button").addEventListener("click", function () {
+            console.log("닫기");
+            chat[0].classList.remove("show");
+            document.getElementById("chatBackground").style.display = "none";
+        }) 
+      //메세지 보내기
+      var message = document.getElementById("chat-messages");
+      document.getElementById("send").addEventListener('click',function(){
+        message.style.display="block";
+      })
+    </script>
 </html>
 
 
